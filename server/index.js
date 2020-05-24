@@ -1,7 +1,12 @@
 const express = require('express');
 const app = express();
+const cors = require("cors");
 
 const mysql = require('mysql');
+
+app.use(express.static("public"));
+app.use(cors());
+
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -11,23 +16,22 @@ const connection = mysql.createConnection({
 
 connection.connect(function (error) {
     if (!!error) {
-        console.log('error');
+        console.log('error in mysql connection');
     }else{
-        console.log('connected')
+        console.log('connected to mysql')
     }
 })
 
-app.use(express.static("public"));
 
 app.get('/', (req, res) => {
     // res.send(`we on ${port}`)
-    connection.query("SELECT * FROM supplayer", (error,rows, fields)=>{
+    connection.query("SELECT * FROM school", (error,rows, fields)=>{
         if (error) {
             console.log('error in query');
         }else{
             console.log('success queryn')
             console.log(rows)
-            res.send(rows[2].supply_name)
+            res.send(rows[1].more_data)
             // console.log(fields)
         }
     })
