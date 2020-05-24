@@ -21,17 +21,17 @@ app.use(express.static("public"));
 
 app.get('/', (req, res) => {
     // res.send(`we on ${port}`)
-    connection.query("SELECT * FROM school", (error,rows, fields)=>{
+    connection.query("SELECT * FROM supplayer", (error,rows, fields)=>{
         if (error) {
             console.log('error in query');
         }else{
             console.log('success queryn')
-            console.log(rows[1].more_data)
-            res.send(rows[1].more_data)
+            console.log(rows)
+            res.send(rows[2].supply_name)
             // console.log(fields)
         }
     })
-    //calback function
+   
     
 
 });
