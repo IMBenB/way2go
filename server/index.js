@@ -5,8 +5,8 @@ const mysql = require('mysql');
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '',
-    database: 'school',
+    password: 'beer1ben',
+    database: 'way2go',
 });
 
 connection.connect(function (error) {
@@ -21,13 +21,18 @@ app.use(express.static("public"));
 
 app.get('/', (req, res) => {
     // res.send(`we on ${port}`)
-    connection.query("SELECT * FROM school", Function(error,rows, fields))
+    connection.query("SELECT * FROM school", (error,rows, fields)=>{
+        if (error) {
+            console.log('error in query');
+        }else{
+            console.log('success queryn')
+            console.log(rows[1].more_data)
+            res.send(rows[1].more_data)
+            // console.log(fields)
+        }
+    })
     //calback function
-    if (!!error) {
-        console.log('error in query');
-    }else{
-        console.log('success query')
-    }
+    
 
 });
 
