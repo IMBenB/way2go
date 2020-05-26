@@ -38,7 +38,7 @@ app.post('/', (req, res) => {
 
     connection.query(`SELECT * 
                         FROM ${body.data.title}
-                        WHERE school_name= '${body.data.name}'`, (err, results) => {
+                        WHERE name= '${body.data.name}'`, (err, results) => {
         try {
             if (err) {
                 console.log('error in query');
@@ -50,7 +50,7 @@ app.post('/', (req, res) => {
                     let check = { results, isOK: true }
                     res.json(check)
 
-                    console.log(results[0].more_data)
+                    console.log(results)
                 } else {
                     let check = { results, isOK: false }
                     res.json(check)

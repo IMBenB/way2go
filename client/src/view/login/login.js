@@ -27,8 +27,8 @@ class Login extends React.Component {
         })
             .then(res => res.json())
             .then(response => {
-                console.log('%%%%%%%%%%%%%%%5')
-                console.log(response.results[0].school_name)
+                // console.log('%%%%%%%%%%%%%%%5')
+                // console.log(response.results[0].school_name)
                 if (response.isOK){
                     this.setState({
                         isLogin: true
