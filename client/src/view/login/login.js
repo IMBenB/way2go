@@ -51,7 +51,7 @@ class Login extends React.Component {
     render() {
         if (this.state.isLogin) {
 
-            return <Redirect to='/Main' />
+            return <Redirect to='/Orders' />
         } else {
             return (
                 <div>
