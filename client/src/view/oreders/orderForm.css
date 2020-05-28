@@ -1,0 +1,9 @@
+.formContainer{
+    direction: rtl;
+}
+
+.setAsRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
