@@ -39,28 +39,30 @@ app.post('/', (req, res) => {
     connection.query(`SELECT * 
                         FROM ${body.data.title}
                         WHERE name= '${body.data.name}'`, (err, results) => {
+
         try {
-            if (err) {
-                console.log('error in query');
-                res.json(err);
 
+            if (body.data.password == results[0].password) {
+
+                console.log('success query')
+                let check = { results, isOK: true }
+                res.json(check)
+
+                console.log(results)
             } else {
-                if (body.data.password == results[0].password) {
-                    console.log('success query')
-                    let check = { results, isOK: true }
-                    res.json(check)
-
-                    console.log(results)
-                } else {
-                    let check = { results, isOK: false }
-                    res.json(check)
-                   
-                }
+                let check = { results, isOK: false }
+                res.json(check)
+                console.log('password incorrect]');
             }
         }
+
+
         catch (err) {
-            console.log(err)
+            console.log('err')
+            let check = { results, isOK: false }
+            res.json(check)
         }
+        // }
     })
 
 

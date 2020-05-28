@@ -33,10 +33,13 @@ class Login extends React.Component {
                     this.setState({
                         isLogin: true
                     })
+                    console.log('loggeed in')
                 }else{
+                    console.log('password incorrect')
                     this.setState({
                         isLogin: false
                     })
+                    alert('שם משתמש או סיסמא שגויים')
                 }
                 
             })
@@ -56,7 +59,7 @@ class Login extends React.Component {
                     <form onSubmit={this.handelSubmit}>
                         <select name="title" >
                             <option value="school">school</option>
-                            <option value="supplayer">supplayer</option>
+                            <option value="supplier">supplier</option>
                             <option value="coordinator">coordinator</option>
                             <option value="loby">loby</option>
                         </select>
