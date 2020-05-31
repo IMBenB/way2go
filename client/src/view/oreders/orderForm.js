@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
 import './orderForm.css';
 
@@ -13,19 +14,19 @@ class orderForm extends React.Component {
                     <div>_________</div>
                 </div>
                 <div className="setAsRow">
-                    <div> שם הבית ספר   </div>
-                    <div>_________</div>
-                    <div> כתובת הבית ספר   </div>
-                    <div>_________</div>
-                    <div> סמל הבית ספר   </div>
-                    <div>_________</div>
+                    <div className="title"> שם הבית ספר   </div>
+                    <div>_{this.props.schoolName}_</div>
+                    <div  className="title"> כתובת הבית ספר   </div>
+                    <div>_{this.props.schoolCity}__{this.props.schoolStreet}__{this.props.schoolNumber}_</div>
+                    <div  className="title"> סמל הבית ספר   </div>
+                    <div>_{this.props.schoolSymbol}_</div>
                 </div>
                 <div className="setAsRow">
-                    <div> שם  המזמין   </div>
+                    <div  className="title"> שם  המזמין   </div>
+                    <div >_________</div>
+                    <div  className="title"> תפקיד    </div>
                     <div>_________</div>
-                    <div> תפקיד    </div>
-                    <div>_________</div>
-                    <div> טלפון   </div>
+                    <div  className="title"> טלפון   </div>
                     <div>_________</div>
                 </div>
                 <div className="setAsRow">
@@ -97,4 +98,15 @@ class orderForm extends React.Component {
     }
 
 }
-export default orderForm
+
+const mapStateToProps = (state) => {
+    return {
+        schoolName: state.schoolNameR,
+        schoolCity: state.schoolCityR,
+        schoolStreet: state.schoolStreetR,
+        schoolNumber: state.schoolNumberR,
+        schoolSymbol: state.schoolSymbolR
+    }
+}
+
+export default connect(mapStateToProps)(orderForm)
