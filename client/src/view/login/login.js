@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 
 class Login extends React.Component {
@@ -34,6 +35,7 @@ class Login extends React.Component {
                         isLogin: true
                     })
                     console.log('loggeed in')
+                    this.props.changeSchoolDetails(response.results)
                 }else{
                     console.log('password incorrect')
                     this.setState({
@@ -41,7 +43,9 @@ class Login extends React.Component {
                     })
                     alert('שם משתמש או סיסמא שגויים')
                 }
-                
+                console.log(response.results)
+                // console.log(this.props)
+               
             })
 
         
@@ -76,4 +80,17 @@ class Login extends React.Component {
         }
     }
 }
-export default Login
+const mapStateToProps = (state) => {
+    return {
+      schoolCityR: state.schoolCityR
+
+}
+}
+const dispatchToProps = (dispatch) => {
+    return {
+        changeSchoolDetails: (newSchoolDetails) => { dispatch({ type: 'CHANGE_DETAILS', newSchoolDetails: newSchoolDetails }) }
+    }
+}
+
+
+export default connect(mapStateToProps,dispatchToProps)(Login)
