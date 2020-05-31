@@ -12,10 +12,10 @@ function App() {
     <BrowserRouter>
     
       <div className="App">
-      <Route path='/Orders' component={Orders} />
-      <Route path='/Login' component={Login} />
-      <Route path='/Main' component={Main} />
-      <Route path='/orderForm' component={orderForm} />
+      <Route path='/Orders' exact component={Orders} />
+      <Route path='/' exact component={Login} />
+      <Route path='/Main' exact component={Main} />
+      <Route path='/orderForm' exact component={orderForm} />
       
         
       

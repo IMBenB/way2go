@@ -8,7 +8,10 @@ class orderForm extends React.Component {
         return (
             <div className="formContainer">
                 <div>טופס 2 - הזמנה ותיחור של הסעה ייעודית   </div>
-                <div> מספר הזמנה______ -ימולא על ידי מנהל המוקד   </div>
+                <div className="setAsRow">
+                    <div> מספר הזמנה -ימולא על ידי מנהל המוקד   </div>
+                    <div>_________</div>
+                </div>
                 <div className="setAsRow">
                     <div> שם הבית ספר   </div>
                     <div>_________</div>
@@ -46,11 +49,47 @@ class orderForm extends React.Component {
                     </select>
                 </div>
                 <div className="setAsRow">
-                    <div> תאריך </div>
+                    <div> תאריך הסעה </div>
                     <div>_________</div>
                     <div>      יום בשבוע :  (בהזמנות מסוג : 1, 3, 5, 6)    </div>
                     <div>_________</div>
                     <div> טלפון   </div>
+                    <div>_________</div>
+                </div>
+                <div className="setAsRow">
+                    <div>שעת איסוף מבית הספר : (חובה להתייצב לפחות 10 דקות לפני שעת האיסוף)</div>
+                    <div>_________</div>
+                </div>
+                <div className="setAsRow">
+                    <div>מס' תלמידים ( צפי) : </div>
+                    <div>_________</div>
+                </div>
+                <div>יעד נסיעה</div>
+                <div className="destinationTable">
+                    <div className="headTable">שם מפעל / מסגרת ההתנסות</div>
+                    <div className="headTable">כתובת מלאה (ישוב, רחוב, מס' בית)</div>
+                    <div className="headTable">שעת חזרה</div>
+                    <div className="headTable">תוספת ק"מ לסבב פנימי (*)</div>
+                    <div className="headTable">_________</div>
+                    <div className="headTable">_________</div>
+                    <div className="headTable">_________</div>
+                    <div className="headTable">_________</div>
+                    <div className="headTable">_________</div>
+                    <div className="headTable">_________</div>
+                    <div className="headTable">_________</div>
+                    <div className="headTable">_________</div>
+                </div>
+                <div>(*) עבור סבב פנימי / עצירה במס' תחנות ללא פירוט כל התחנות בטבלה (יש לפרט בהערות)</div>
+                <div className="setAsRow">
+                    <div>הערות ובקשות מיוחדות</div>
+                    <div>_________</div>
+                </div>
+                <div className="setAsRow">
+                    <div>איש קשר לתאום ההסעה: שם פרטי + משפחה </div>
+                    <div>_________</div>
+                    <div>תפקיד  </div>
+                    <div>_________</div>
+                    <div>טלפון ישיר  </div>
                     <div>_________</div>
                 </div>
             </div>
