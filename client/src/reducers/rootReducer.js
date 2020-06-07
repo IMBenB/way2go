@@ -1,9 +1,9 @@
 const initState = {
-    schoolNameR: 'ברנר',
-    schoolCityR: 'כפר סבא',
-    schoolStreetR: 'זאב',
-    schoolNumberR: '56',
-    schoolSymbolR: '666'
+    schoolNameR: '',
+    schoolCityR: ' ',
+    schoolStreetR: '',
+    schoolNumberR: '',
+    schoolSymbolR: ''
 }
 
 

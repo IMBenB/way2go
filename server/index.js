@@ -74,6 +74,14 @@ app.post('/', (req, res) => {
 
 
 });
+app.post('/orderForm', (req, res) => {
+    let body = req.body;
+    console.log(body);
+    let isData = { body, isOK: true }
+                res.json(isData)
+    
+
+});
 
 let port = process.env.PORT || 5050;
 
