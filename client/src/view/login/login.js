@@ -10,7 +10,16 @@ class Login extends React.Component {
             isLogin: false
         }
         this.handelSubmit = this.handelSubmit.bind(this);
+        // fetch('http://localhost:5050/', {
+        //     method: 'POST',
+        //     body: JSON.stringify(),
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+
+        // })
     }
+    
     handelSubmit(e) {
         let data = {
             name: e.target.name.value,

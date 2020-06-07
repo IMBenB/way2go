@@ -10,15 +10,21 @@ app.use(bodyParser.json());
 
 
 const connection = mysql.createConnection({
+    // host: 'sql202.unaux.com',
+    // user: 'unaux_25921501',
+    // password: 'beer4567',
+    // database: 'unaux_25921501_way2go'
     host: 'localhost',
     user: 'root',
-    password: 'beer1ben',
+    password: 'beer4567',
     database: 'way2go',
+    port: 3306
 });
 
 connection.connect(function (error) {
     if (!!error) {
         console.log('error in mysql connection');
+        // console.log(error);
     } else {
         console.log('connected to mysql')
     }
