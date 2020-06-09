@@ -76,10 +76,36 @@ app.post('/', (req, res) => {
 });
 app.post('/orderForm', (req, res) => {
     let body = req.body;
+    let lastID = 0;
     console.log(body);
+    connection.query(`SELECT id
+     FROM way2go.orders
+     order by id desc
+     limit 1`, (err, high) => {
+        lastID = high[0].id
+        // console.log(lastID)
+
+        console.log(lastID)
+        connection.query(`INSERT INTO way2go.orders (id, school_name, school_City,
+            school_Street, school_Number,school_Symbol, orderby_name, orderby_possition, orderby_phone, order_objective, order_type,
+            ordertravel_date, ordertravel_day, pickuponly, ordertravel_time,
+            order_students_number, order_destanation, order_address, order_return_time,
+            order_comments,order_contact_name, order_contact_possition, 
+            order_contact_phone
+    ) 
+        VALUES 
+        ('${lastID+1}','${body.orderData.schoolName}','${body.orderData.schoolCity}',
+        '${body.orderData.schoolStreet}','${body.orderData.schoolNumber}','${body.orderData.schoolSymbol}','${body.orderData.orderName}',
+        '${body.orderData.orderPossition}','${body.orderData.orderPhone}','${body.orderData.orderObjective}','${body.orderData.orderType}',
+        '${body.orderData.orderDate}','${body.orderData.orderDay}','${body.orderData.orderPickuponly}','${body.orderData.orderTime}',
+        '${body.orderData.orderStudents}','${body.orderData.orderTripA}','${body.orderData.orderAddressA}','${body.orderData.orderReturnTimeA}',
+        '${body.orderData.orderComments}','${body.orderData.orderContact}','${body.orderData.orderContactPosition}',
+        '${body.orderData.orderContactPhone}'
+    )`)
+    });
     let isData = { body, isOK: true }
-                res.json(isData)
-    
+    res.json(isData)
+
 
 });
 
