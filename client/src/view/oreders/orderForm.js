@@ -27,7 +27,7 @@ class orderForm extends React.Component {
             schoolNumber: this.props.schoolNumber,
             schoolSymbol: this.props.schoolSymbol,
             orderName: e.target.orderName.value,
-            orderPossition: e.target.orderPossition.value,
+            orderPosition: e.target.orderPosition.value,
             orderPhone: e.target.orderPhone.value,
             orderObjective: e.target.orderObjective.value,
             orderType: e.target.orderType.value,
@@ -50,7 +50,7 @@ class orderForm extends React.Component {
 
 
         }
-        console.log(orderData);
+        // console.log(orderData);
         fetch('http://localhost:5050/orderForm', {
             method: 'POST',
             body: JSON.stringify({ orderData }),
@@ -61,7 +61,7 @@ class orderForm extends React.Component {
         }).then(res => res.json())
             .then(response => {
                 if (response.isOK) {
-                    console.log(response.body)
+                    // console.log(response.body)
                     this.setState({
                         isOrder: true
                     })
@@ -96,7 +96,7 @@ class orderForm extends React.Component {
                             <div className="title"> שם  המזמין:   </div>
                             <input name="orderName" type="text" placeholder="שם המזמין" />
                             <div className="title"> תפקיד:    </div>
-                            <input name="orderPossition" type="text" placeholder="תפקיד " />
+                            <input name="orderPosition" type="text" placeholder="תפקיד " />
                             <div className="title"> טלפון:   </div>
                             <input name="orderPhone" type="number" placeholder="טלפון " />
                         </div>

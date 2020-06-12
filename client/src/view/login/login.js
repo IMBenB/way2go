@@ -52,7 +52,7 @@ class Login extends React.Component {
                     })
                     alert('שם משתמש או סיסמא שגויים')
                 }
-                console.log(response.results)
+                // console.log(response.results)
                 // console.log(this.props)
                
             })

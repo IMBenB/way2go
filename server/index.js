@@ -30,17 +30,17 @@ connection.connect(function (error) {
     }
 })
 
-
+//login/////////////////////////
 app.post('/', (req, res) => {
 
     let body = req.body;
 
-    console.dir('--------')
-    console.log(body.data)
-    console.log(body.data.name)
-    console.log(body.data.password)
-    console.log(body.data.title)
-    console.dir('--------')
+    // console.dir('--------')
+    // console.log(body.data)
+    // console.log(body.data.name)
+    // console.log(body.data.password)
+    // console.log(body.data.title)
+    // console.dir('--------')
 
     connection.query(`SELECT * 
                         FROM ${body.data.title}
@@ -54,7 +54,7 @@ app.post('/', (req, res) => {
                 let check = { results, isOK: true }
                 res.json(check)
 
-                console.log(results)
+                // console.log(results)
             } else {
                 let check = { results, isOK: false }
                 res.json(check)
@@ -68,16 +68,56 @@ app.post('/', (req, res) => {
             let check = { results, isOK: false }
             res.json(check)
         }
-        // }
+
     })
 
 
 
 });
+//end login/////////////
+
+
+//get orders//////////////////
+
+app.post('/getOrders', (req, res) => {
+    let body = req.body
+    console.log('school name gerOrders')
+    console.log(body.schoolName)
+    connection.query(`SELECT * 
+    FROM way2go.orders
+    WHERE school_name= '${body.schoolName}'`, (err, results) => {
+
+        try {
+            console.log(results)
+
+
+                console.log('success get data')
+                let check = { results, isOK: true }
+                res.json(check)
+
+        }
+
+
+        catch (err) {
+            console.log('err')
+            let check = { results, isOK: false }
+            res.json(check)
+        }
+
+    })
+})
+
+//end get orders//////////////////
+
+
+
+
+
+// save orders/////////////////////
 app.post('/orderForm', (req, res) => {
     let body = req.body;
     let lastID = 0;
-    console.log(body);
+    // console.log(body);
     connection.query(`SELECT id
      FROM way2go.orders
      order by id desc
@@ -85,18 +125,18 @@ app.post('/orderForm', (req, res) => {
         lastID = high[0].id
         // console.log(lastID)
 
-        console.log(lastID)
+        // console.log(lastID)
         connection.query(`INSERT INTO way2go.orders (id, school_name, school_City,
-            school_Street, school_Number,school_Symbol, orderby_name, orderby_possition, orderby_phone, order_objective, order_type,
+            school_Street, school_Number,school_Symbol, orderby_name, orderby_position, orderby_phone, order_objective, order_type,
             ordertravel_date, ordertravel_day, pickuponly, ordertravel_time,
             order_students_number, order_destanation, order_address, order_return_time,
-            order_comments,order_contact_name, order_contact_possition, 
+            order_comments,order_contact_name, order_contact_position, 
             order_contact_phone
     ) 
         VALUES 
-        ('${lastID+1}','${body.orderData.schoolName}','${body.orderData.schoolCity}',
+        ('${lastID + 1}','${body.orderData.schoolName}','${body.orderData.schoolCity}',
         '${body.orderData.schoolStreet}','${body.orderData.schoolNumber}','${body.orderData.schoolSymbol}','${body.orderData.orderName}',
-        '${body.orderData.orderPossition}','${body.orderData.orderPhone}','${body.orderData.orderObjective}','${body.orderData.orderType}',
+        '${body.orderData.orderPosition}','${body.orderData.orderPhone}','${body.orderData.orderObjective}','${body.orderData.orderType}',
         '${body.orderData.orderDate}','${body.orderData.orderDay}','${body.orderData.orderPickuponly}','${body.orderData.orderTime}',
         '${body.orderData.orderStudents}','${body.orderData.orderTripA}','${body.orderData.orderAddressA}','${body.orderData.orderReturnTimeA}',
         '${body.orderData.orderComments}','${body.orderData.orderContact}','${body.orderData.orderContactPosition}',
@@ -108,6 +148,9 @@ app.post('/orderForm', (req, res) => {
 
 
 });
+//end save orders////////
+
+
 
 let port = process.env.PORT || 5050;
 
