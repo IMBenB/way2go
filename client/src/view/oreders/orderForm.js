@@ -46,7 +46,8 @@ class orderForm extends React.Component {
             orderComments: e.target.orderComments.value,
             orderContact: e.target.orderContact.value,
             orderContactPosition: e.target.orderContactPosition.value,
-            orderContactPhone: e.target.orderContactPhone.value
+            orderContactPhone: e.target.orderContactPhone.value,
+            status: 'ממתין לאישור'
 
 
 

@@ -131,7 +131,7 @@ app.post('/orderForm', (req, res) => {
             ordertravel_date, ordertravel_day, pickuponly, ordertravel_time,
             order_students_number, order_destanation, order_address, order_return_time,
             order_comments,order_contact_name, order_contact_position, 
-            order_contact_phone, distance
+            order_contact_phone, distance, status
     ) 
         VALUES 
         ('${lastID + 1}','${body.orderData.schoolName}','${body.orderData.schoolCity}',
@@ -140,7 +140,7 @@ app.post('/orderForm', (req, res) => {
         '${body.orderData.orderDate}','${body.orderData.orderDay}','${body.orderData.orderPickuponly}','${body.orderData.orderTime}',
         '${body.orderData.orderStudents}','${body.orderData.orderTripA}','${body.orderData.orderAddressA}','${body.orderData.orderReturnTimeA}',
         '${body.orderData.orderComments}','${body.orderData.orderContact}','${body.orderData.orderContactPosition}',
-        '${body.orderData.orderContactPhone}','${body.orderData.distanceA}'
+        '${body.orderData.orderContactPhone}','${body.orderData.distanceA}','${body.orderData.status}'
     )`)
     });
     let isData = { body, isOK: true }
