@@ -87,7 +87,7 @@ class Orders extends React.Component {
                      שעת נסיעה{this.state.orders[index].ordertravel_time},  </div><div> איסוף בלבד:{this.state.orders[index].pickuponly},  </div><div> מספר תלמידים:{this.state.orders[index].order_students_number},  </div><div>
                      יעד הנסיעה{this.state.orders[index].oredr_destanation},  </div><div> כתובת היעד{this.state.orders[index].order_address},  </div><div> שעת חזרה{this.state.orders[index].order_return_time},  </div><div>
                      הערות: {this.state.orders[index].order_comments},  </div><div> שם איש קשר:{this.state.orders[index].order_contact_name},  </div><div> תפקיד איש קשר{this.state.orders[index].order_contact_position},  </div><div>
-                     טלפון איש קשר: {this.state.orders[index].order_contact_phone}</div></div>
+                     טלפון איש קשר: {this.state.orders[index].order_contact_phone}, מרחק {this.state.orders[index].distance}</div></div>
                 }
                 )}</div>
                 

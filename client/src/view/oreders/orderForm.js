@@ -39,6 +39,7 @@ class orderForm extends React.Component {
             orderTripA: e.target.orderTripA.value,
             orderAddressA: e.target.orderAddressA.value,
             orderReturnTimeA: e.target.orderReturnTimeA.value,
+            distanceA: e.target.distanceA.value,
             orderTripB: e.target.orderTripB.value,
             orderAddressB: e.target.orderAddressB.value,
             orderReturnTimeB: e.target.orderReturnTimeB.value,
@@ -152,13 +153,17 @@ class orderForm extends React.Component {
                             <div className="headTable">שם מפעל / מסגרת ההתנסות</div>
                             <div className="headTable">כתובת מלאה (ישוב, רחוב, מס' בית)</div>
                             <div className="headTable">שעת חזרה</div>
+                            <div className="headTable">מרחק</div>
 
                             <input className="headTable" name="orderTripA" type="text" placeholder=" " />
                             <input className="headTable" name="orderAddressA" type="text" placeholder=" " />
                             <input className="headTable" name="orderReturnTimeA" type="time" placeholder=" " />
+                            <input className="headTable" name="distanceA" type="number" placeholder=" " />
                             <input className="headTable" name="orderTripB" type="text" placeholder=" " />
                             <input className="headTable" name="orderAddressB" type="text" placeholder=" " />
                             <input className="headTable" name="orderReturnTimeB" type="time" placeholder=" " />
+                            <input className="headTable" name="distanceB" type="number" placeholder=" " />
+
 
 
                         </div>
