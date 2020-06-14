@@ -7,7 +7,8 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLogin: false
+            isLogin: false,
+            title:''
         }
         this.handelSubmit = this.handelSubmit.bind(this);
         // fetch('http://localhost:5050/', {
@@ -19,13 +20,14 @@ class Login extends React.Component {
 
         // })
     }
-    
+
     handelSubmit(e) {
         let data = {
             name: e.target.name.value,
             password: e.target.password.value,
             title: e.target.title.value
         }
+        this.setState({title : e.target.title.value});
         e.preventDefault()
         fetch('http://localhost:5050/', {
             method: 'POST',
@@ -39,13 +41,13 @@ class Login extends React.Component {
             .then(response => {
                 // console.log('%%%%%%%%%%%%%%%5')
                 // console.log(response.results[0].school_name)
-                if (response.isOK){
+                if (response.isOK) {
                     this.setState({
                         isLogin: true
                     })
                     console.log('loggeed in')
                     this.props.changeSchoolDetails(response.results)
-                }else{
+                } else {
                     console.log('password incorrect')
                     this.setState({
                         isLogin: false
@@ -54,17 +56,23 @@ class Login extends React.Component {
                 }
                 // console.log(response.results)
                 // console.log(this.props)
-               
+
             })
 
-        
+
 
     }
 
     render() {
         if (this.state.isLogin) {
+            if (this.state.title == "school") {
+                return <Redirect to='/Orders' />
+            }else{
+                if (this.state.title == "coordinator") {
+                    return <Redirect to='/coordinator' />
+                }
 
-            return <Redirect to='/Orders' />
+            }
         } else {
             return (
                 <div>
@@ -91,9 +99,9 @@ class Login extends React.Component {
 }
 const mapStateToProps = (state) => {
     return {
-      schoolCityR: state.schoolCityR
+        schoolCityR: state.schoolCityR
 
-}
+    }
 }
 const dispatchToProps = (dispatch) => {
     return {
@@ -102,4 +110,4 @@ const dispatchToProps = (dispatch) => {
 }
 
 
-export default connect(mapStateToProps,dispatchToProps)(Login)
+export default connect(mapStateToProps, dispatchToProps)(Login)
