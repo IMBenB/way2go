@@ -81,7 +81,7 @@ app.post('/', (req, res) => {
 
 app.post('/getOrders', (req, res) => {
     let body = req.body
-    console.log('school name gerOrders')
+    console.log('school name getOrders')
     console.log(body.schoolName)
     connection.query(`SELECT * 
     FROM way2go.orders
