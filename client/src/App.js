@@ -4,8 +4,8 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import Login from './view/login/login'
 import Main from './view/main/main'
-import Orders from './view/oreders/Orders';
-import orderForm from './view/oreders/orderForm';
+import Orders from './view/orders/Orders';
+import orderForm from './view/orders/orderForm';
 import Coordinator from './view/coordinator/coordinator';
 
 function App() {
