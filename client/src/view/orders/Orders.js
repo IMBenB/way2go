@@ -16,19 +16,18 @@ class Orders extends React.Component {
         }
 
 
-        this.refresh = this.refresh.bind(this);
+    //     this.refresh = this.refresh.bind(this);
 
 
-    }
-        refresh = (e) => {
-        e.preventDefault();
-        // componentDidMount(){
+    // }
+    //     refresh = (e) => {
+    //     e.preventDefault();
+      
         let schoolName = this.props.schoolName
-        // console.log('orders')
-        // console.log(schoolName)
+     
         fetch('http://localhost:5050/getOrders', {
             method: 'POST',
-            body: JSON.stringify({schoolName}),
+            body: JSON.stringify(),
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -60,9 +59,7 @@ class Orders extends React.Component {
                 console.error(err)
             })
 
-        // console.log('2')
-        // console.log(this.state.orders)
-        // }
+  
     }
     
     render() {
@@ -81,6 +78,7 @@ class Orders extends React.Component {
                 {this.state.orders.map((order,index)=>{
                     console.log('in map')
                     console.log(order[index])
+                    if (this.state.orders[index].school_name == this.props.schoolName){
                     return <div className="setAsRow"> <div> מספר הזמנה {this.state.orders[index].id} ,  </div><div> שם בית ספר {this.state.orders[index].school_name}  ,  </div><div> שם מזמין {this.state.orders[index].orderby_name},</div><div>  
                      תפקיד המזמין{this.state.orders[index].orderby_position},  </div><div> טלפון המזמין{this.state.orders[index].orderby_phone},  </div><div> מטרת הנסיעה{this.state.orders[index].order_objective},  </div><div>
                      סוג הזמנה {this.state.orders[index].order_type},  </div><div> תאריך נסיעה{this.state.orders[index].ordertravel_date},  </div><div> יום נסיעה{this.state.orders[index].ordertravel_day},  </div><div>
@@ -88,7 +86,7 @@ class Orders extends React.Component {
                      יעד הנסיעה{this.state.orders[index].oredr_destanation},  </div><div> כתובת היעד{this.state.orders[index].order_address},  </div><div> שעת חזרה{this.state.orders[index].order_return_time},  </div><div>
                      הערות: {this.state.orders[index].order_comments},  </div><div> שם איש קשר:{this.state.orders[index].order_contact_name},  </div><div> תפקיד איש קשר{this.state.orders[index].order_contact_position},  </div><div>
                      טלפון איש קשר: {this.state.orders[index].order_contact_phone}, מרחק {this.state.orders[index].distance}
-                     , סטטוס {this.state.orders[index].status}</div></div>
+                     , סטטוס {this.state.orders[index].status}</div></div>}
                 }
                 )}</div>
                 

@@ -84,8 +84,7 @@ app.post('/getOrders', (req, res) => {
     console.log('school name getOrders')
     console.log(body.schoolName)
     connection.query(`SELECT * 
-    FROM way2go.orders
-    WHERE school_name= '${body.schoolName}'`, (err, results) => {
+    FROM way2go.orders`, (err, results) => {
 
         try {
             console.log(results)
