@@ -10,6 +10,20 @@
     direction: rtl;
 }
 
+.orderTable{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    direction: rtl;
+    border: solid 1px black;
+
+}
+.tableHeader{
+    background-color: rgb(75, 165, 42);
+}
+.border{
+    border: solid 1px black;
+}
+
 .destinationTable{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr ;
