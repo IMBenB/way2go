@@ -60,11 +60,9 @@ class Coordinator extends React.Component {
     }
     approve = (e) => {
         e.preventDefault();
-        
-        console.dir('dir')
-        console.dir(e.target)
+
         console.dir('log')
-        console.log(e.target)
+        console.log(e.target.value)
     }
 
     render() {
@@ -109,7 +107,7 @@ class Coordinator extends React.Component {
                             console.log(order[index])
                             if (this.state.orders[index].id != 0) {
                                 return <div >
-                                    <form value={this.state.orders[index].id} onSubmit={this.approve}>
+                                    <form  >
                                         <div className="orderTable">
                                             <div className="border">{this.state.orders[index].id}   </div>
                                             <div className="border">{this.state.orders[index].school_name}    </div>
@@ -131,7 +129,7 @@ class Coordinator extends React.Component {
                                             <div className="border">{this.state.orders[index].order_contact_position}</div>
                                             <div className="border">{this.state.orders[index].order_contact_phone}</div>
                                             <div className="border"> {this.state.orders[index].distance}</div>
-                                            <button >אשר?</button>
+                                            <button value={this.state.orders[index].id} onClick={this.approve} name="id" type="button" placeholder='אשר?'>אשר?</button>
                                         </div>
                                     </form>
                                 </div>
