@@ -73,7 +73,8 @@ class Orders extends React.Component {
                 {(this.state.isRefresh) ?
 
 
-                    <div>  <button onClick={this.refresh}>רענון</button>
+                    <div>  
+                        {/* <button onClick={this.refresh}>רענון</button> */}
                         <Link to="/orderForm"><button  > עבור לטופס הזמנה  </button></Link>
                         <div className="orderTable tableHeader">
                             <div className="border"> מספר הזמנה </div>

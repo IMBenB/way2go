@@ -1,3 +1,8 @@
+body{
+    width: 1680px;
+    overflow-x: scroll;
+}
+
 .formContainer{
     direction: rtl;
     
@@ -12,13 +17,14 @@
 
 .orderTable{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns:repeat(21, 80px);
     direction: rtl;
     border: solid 1px black;
 
 }
 .tableHeader{
     background-color: rgb(75, 165, 42);
+    overflow-x: visible;
 }
 .border{
     border: solid 1px black;
