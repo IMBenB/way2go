@@ -81,13 +81,13 @@ app.post('/', (req, res) => {
 
 app.post('/getOrders', (req, res) => {
     let body = req.body
-    console.log('school name getOrders')
-    console.log(body.schoolName)
+    // console.log('school name getOrders')
+    // console.log(body.schoolName)
     connection.query(`SELECT * 
     FROM way2go.orders`, (err, results) => {
 
         try {
-            console.log(results)
+            // console.log(results)
 
 
                 console.log('success get data')
@@ -109,6 +109,37 @@ app.post('/getOrders', (req, res) => {
 //end get orders//////////////////
 
 
+//get suppliers//////////////////
+
+app.post('/getSuppliers', (req, res) => {
+    let body = req.body
+    console.log('getSuppliers')
+    // console.log(body.schoolName)
+    connection.query(`SELECT * 
+    FROM way2go.supplier`, (err, results) => {
+
+        try {
+
+                console.log('success get data from supplier')
+                console.log(results)
+
+                let check = { results, isOK: true }
+                res.json(check)
+
+        }
+
+
+        catch (err) {
+            console.log('err')
+            let check = { results, isOK: false }
+            res.json(check)
+        }
+
+    })
+})
+
+//end get syppliers//////////////////
+
 
 
 
@@ -117,6 +148,15 @@ app.post('/orderForm', (req, res) => {
     let body = req.body;
     let lastID = 0;
     // console.log(body);
+    let supplierDetails=[]
+    connection.query('SELECT name, price FROM way2go.supplier WHERE ( distance=15 AND order_students_number=35)', (err ,supplier)=>{
+        console.log(supplier[0].name)
+        console.log(supplier[0].price)
+        supplierDetails =supplier;
+        console.log('in let')
+        console.log(supplierDetails[0].name)
+        console.log(supplierDetails[0].price)
+    });
     connection.query(`SELECT id
      FROM way2go.orders
      order by id desc
@@ -130,7 +170,7 @@ app.post('/orderForm', (req, res) => {
             ordertravel_date, ordertravel_day, pickuponly, ordertravel_time,
             order_students_number, order_destanation, order_address, order_return_time,
             order_comments,order_contact_name, order_contact_position, 
-            order_contact_phone, distance, status
+            order_contact_phone, distance, status, supplier_name, supplier_price
     ) 
         VALUES 
         ('${lastID + 1}','${body.orderData.schoolName}','${body.orderData.schoolCity}',
@@ -139,9 +179,10 @@ app.post('/orderForm', (req, res) => {
         '${body.orderData.orderDate}','${body.orderData.orderDay}','${body.orderData.orderPickuponly}','${body.orderData.orderTime}',
         '${body.orderData.orderStudents}','${body.orderData.orderTripA}','${body.orderData.orderAddressA}','${body.orderData.orderReturnTimeA}',
         '${body.orderData.orderComments}','${body.orderData.orderContact}','${body.orderData.orderContactPosition}',
-        '${body.orderData.orderContactPhone}','${body.orderData.distanceA}','${body.orderData.status}'
+        '${body.orderData.orderContactPhone}','${body.orderData.distanceA}','${body.orderData.status}','${supplierDetails[0].name}','${supplierDetails[0].price}'
     )`)
     });
+
     let isData = { body, isOK: true }
     res.json(isData)
 

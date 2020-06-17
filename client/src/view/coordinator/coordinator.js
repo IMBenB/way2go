@@ -103,8 +103,7 @@ class Coordinator extends React.Component {
                             <div className="border"> סטטוס הזמנה </div>
                         </div>
                         {this.state.orders.map((order, index) => {
-                            console.log('in map')
-                            console.log(order[index])
+                            
                             if (this.state.orders[index].id != 0) {
                                 return <div >
                                     <form  >
