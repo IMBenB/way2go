@@ -97,6 +97,8 @@ class Orders extends React.Component {
                             <div className="border"> תפקיד איש קשר</div>
                             <div className="border">טלפון איש קשר</div>
                             <div className="border">מרחק ליעד</div>
+                            <div className="border">ספק</div>
+                            <div className="border">מחיר </div>
                             <div className="border"> סטטוס הזמנה </div>
                         </div>
                         {this.state.orders.map((order, index) => {
@@ -124,6 +126,8 @@ class Orders extends React.Component {
                                     <div className="border">{this.state.orders[index].order_contact_position}</div>
                                     <div className="border">{this.state.orders[index].order_contact_phone}</div>
                                     <div className="border"> {this.state.orders[index].distance}</div>
+                                    <div className="border"> {this.state.orders[index].supplier_name}</div>
+                                    <div className="border"> {this.state.orders[index].supplier_price}</div>
                                     <div className="border">{this.state.orders[index].status}</div>
                                 </div>
                             }

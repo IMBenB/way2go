@@ -1,5 +1,5 @@
 body{
-    width: 1680px;
+    width: 1840px;
     overflow-x: scroll;
 }
 
@@ -17,7 +17,7 @@ body{
 
 .orderTable{
     display: grid;
-    grid-template-columns:repeat(21, 80px);
+    grid-template-columns:repeat(23, 80px);
     direction: rtl;
     border: solid 1px black;
 
