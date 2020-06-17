@@ -100,10 +100,12 @@ class Coordinator extends React.Component {
                             <div className="border"> תפקיד איש קשר</div>
                             <div className="border">טלפון איש קשר</div>
                             <div className="border">מרחק ליעד</div>
+                            <div className="border">ספק</div>
+                            <div className="border">מחיר </div>
                             <div className="border"> סטטוס הזמנה </div>
                         </div>
                         {this.state.orders.map((order, index) => {
-                            
+
                             if (this.state.orders[index].id != 0) {
                                 return <div >
                                     <form  >
@@ -128,6 +130,8 @@ class Coordinator extends React.Component {
                                             <div className="border">{this.state.orders[index].order_contact_position}</div>
                                             <div className="border">{this.state.orders[index].order_contact_phone}</div>
                                             <div className="border"> {this.state.orders[index].distance}</div>
+                                            <div className="border"> {this.state.orders[index].supplier_name}</div>
+                                            <div className="border"> {this.state.orders[index].supplier_price}</div>
                                             <button value={this.state.orders[index].id} onClick={this.approve} name="id" type="button" placeholder='אשר?'>אשר?</button>
                                         </div>
                                     </form>
