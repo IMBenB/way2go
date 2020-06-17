@@ -90,9 +90,9 @@ app.post('/getOrders', (req, res) => {
             // console.log(results)
 
 
-                console.log('success get data')
-                let check = { results, isOK: true }
-                res.json(check)
+            console.log('success get data')
+            let check = { results, isOK: true }
+            res.json(check)
 
         }
 
@@ -120,11 +120,11 @@ app.post('/getSuppliers', (req, res) => {
 
         try {
 
-                console.log('success get data from supplier')
-                console.log(results)
+            console.log('success get data from supplier')
+            console.log(results)
 
-                let check = { results, isOK: true }
-                res.json(check)
+            let check = { results, isOK: true }
+            res.json(check)
 
         }
 
@@ -147,12 +147,47 @@ app.post('/getSuppliers', (req, res) => {
 app.post('/orderForm', (req, res) => {
     let body = req.body;
     let lastID = 0;
+    let distance = 0;
+    let studentsNumber=0;
+
+    if (`${body.orderData.distanceA}` <= 15) {
+        distance = 15;
+    } else {
+        if (`${body.orderData.distanceA}` <= 50) {
+            distance = 50;
+        } else {
+            if (`${body.orderData.distanceA}` <= 100) {
+                distance = 100;
+            }
+            else {
+                if (`${body.orderData.distanceA}` <= 200) {
+                    distance = 200;
+                } else { distance = 300 }
+            }
+        }
+    }
+
+    if (`${body.orderData.orderStudents}` >= 35) {
+        studentsNumber = 355;
+    } else {
+        if (`${body.orderData.distanceA}` >= 22) {
+            studentsNumber = 22;
+        } else {
+            if (`${body.orderData.distanceA}` >= 19) {
+                studentsNumber = 19;
+            }
+            else {
+                if (`${body.orderData.distanceA}` >= 16) {
+                    studentsNumber = 16;
+                } else { studentsNumber = 4 }
+            }
+        }
+    }
     // console.log(body);
-    let supplierDetails=[]
-    connection.query('SELECT name, price FROM way2go.supplier WHERE ( distance=15 AND order_students_number=35)', (err ,supplier)=>{
-        console.log(supplier[0].name)
-        console.log(supplier[0].price)
-        supplierDetails =supplier;
+    let supplierDetails = []
+    connection.query('SELECT name, price FROM way2go.supplier WHERE ( distance=`${distance}` AND order_students_number=`${studentsNumber}`)', (err, supplier) => {
+
+        supplierDetails = supplier;
         console.log('in let')
         console.log(supplierDetails[0].name)
         console.log(supplierDetails[0].price)
