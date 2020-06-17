@@ -132,7 +132,7 @@ class Coordinator extends React.Component {
                                             <div className="border"> {this.state.orders[index].distance}</div>
                                             <div className="border"> {this.state.orders[index].supplier_name}</div>
                                             <div className="border"> {this.state.orders[index].supplier_price}</div>
-                                            <button value={this.state.orders[index].id} onClick={this.approve} name="id" type="button" placeholder='אשר?'>אשר?</button>
+                                            <button value={this.state.orders[index].id} onClick={this.approve} name="id" type="button">{this.state.orders[index].status}</button>
                                         </div>
                                     </form>
                                 </div>
