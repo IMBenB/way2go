@@ -185,7 +185,7 @@ app.post('/orderForm', (req, res) => {
     }
     // console.log(body);
     let supplierDetails = []
-    connection.query('SELECT name, price FROM way2go.supplier WHERE ( distance=`${distance}` AND order_students_number=`${studentsNumber}`)', (err, supplier) => {
+    connection.query(`SELECT name, price FROM way2go.supplier WHERE ( distance=${distance} AND order_students_number=${studentsNumber})`, (err, supplier) => {
 
         supplierDetails = supplier;
         console.log('in let')
