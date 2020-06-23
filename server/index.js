@@ -225,6 +225,16 @@ app.post('/orderForm', (req, res) => {
 });
 //end save orders////////
 
+//change status coordinator approve
+app.post('/coordinatorApprove', (req, res) => {
+    let body = req.body;
+    console.log('in change status coordinator');
+    console.log(body.orderNumber);
+    connection.query(`UPDATE way2go.orders SET status = 'אושר, ממתין לאישור ספק' WHERE (id = ${body.orderNumber})`)
+    
+});
+
+//end change status coordinator approve
 
 
 let port = process.env.PORT || 5050;

@@ -70,6 +70,10 @@ class Login extends React.Component {
             }else{
                 if (this.state.title == "coordinator") {
                     return <Redirect to='/coordinator' />
+                }else{
+                    if (this.state.title == "supplier"){
+                        return <Redirect to ='/supplier'/>
+                    }
                 }
 
             }

@@ -4,6 +4,7 @@ const initState = {
     schoolStreetR: '',
     schoolNumberR: '',
     schoolSymbolR: ''
+    
 }
 
 

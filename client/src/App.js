@@ -7,6 +7,7 @@ import Main from './view/main/main'
 import Orders from './view/orders/Orders';
 import orderForm from './view/orders/orderForm';
 import Coordinator from './view/coordinator/coordinator';
+import Supplier from './view/orders/supplierOrders';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path='/Main' exact component={Main} />
       <Route path='/orderForm' exact component={orderForm} />
       <Route path='/coordinator' exact component={Coordinator} />
+      <Route path='/Supplier' exact component={Supplier} />
       
         
       

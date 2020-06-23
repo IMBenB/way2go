@@ -60,9 +60,29 @@ class Coordinator extends React.Component {
     }
     approve = (e) => {
         e.preventDefault();
-
+        let orderNumber = e.target.value;
         console.dir('log')
-        console.log(e.target.value)
+        console.log(orderNumber)
+        fetch('http://localhost:5050/coordinatorApprove', {
+            method: 'POST',
+            body: JSON.stringify({ orderNumber }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+
+        }).then(res => res.json())
+            .then(response => {
+                if (response.isOK) {
+                    // console.log(response.body)
+                    this.setState({
+                        isOrder: true,
+                        isRefresh: true
+                    })
+
+                }
+
+            })
+        
     }
 
     render() {
