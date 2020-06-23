@@ -83,10 +83,10 @@ class Login extends React.Component {
 
                     <form onSubmit={this.handelSubmit}>
                         <select name="title" >
-                            <option value="school">school</option>
-                            <option value="supplier">supplier</option>
-                            <option value="coordinator">coordinator</option>
-                            <option value="loby">loby</option>
+                            <option value="school">בית ספר</option>
+                            <option value="supplier">ספק</option>
+                            <option value="coordinator">מתאם</option>
+                            <option value="loby">משרד</option>
                         </select>
                         <p> name</p>
                         <input name='name' type="text" placeholder="name" />
