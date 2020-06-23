@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 
 import './orderForm.css';
 
-
-
-
 class Supplier extends React.Component {
     constructor(props) {
         super(props);
@@ -61,7 +58,32 @@ class Supplier extends React.Component {
 
 
     }
+    approveSupplier = (e) => {
+        e.preventDefault();
+        let orderNumber = e.target.value;
+        console.dir('log')
+        console.log(orderNumber)
+        fetch('http://localhost:5050/supplierApprove', {
+            method: 'POST',
+            body: JSON.stringify({ orderNumber }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
 
+        }).then(res => res.json())
+            .then(response => {
+                if (response.isOK) {
+                    // console.log(response.body)
+                    this.setState({
+                        isOrder: true,
+                        isRefresh: true
+                    })
+
+                }
+
+            })
+
+    }
     render() {
         return (
             <div>
@@ -70,12 +92,12 @@ class Supplier extends React.Component {
                 }
                 )} */}
 
+
                 {(this.state.isRefresh) ?
 
-
-                    <div>  
+                    <div>
                         {/* <button onClick={this.refresh}>רענון</button> */}
-                        <Link to="/orderForm"><button  > עבור לטופס הזמנה  </button></Link>
+
                         <div className="orderTable tableHeader">
                             <div className="border"> מספר הזמנה </div>
                             <div className="border"> שם בית ספר </div>
@@ -104,7 +126,7 @@ class Supplier extends React.Component {
                         {this.state.orders.map((order, index) => {
                             console.log('in map')
                             console.log(order[index])
-                            if ((this.state.orders[index].supplier_name == this.props.schoolName) && (this.state.orders[index].status ==`אושר, ממתין לאישור ספק`)){
+                            if ((this.state.orders[index].supplier_name == this.props.schoolName) && (this.state.orders[index].status == `אושר, ממתין לאישור ספק`)) {
                                 return <div className="orderTable">
                                     <div className="border">{this.state.orders[index].id}   </div>
                                     <div className="border">{this.state.orders[index].school_name}    </div>
@@ -128,16 +150,15 @@ class Supplier extends React.Component {
                                     <div className="border"> {this.state.orders[index].distance}</div>
                                     <div className="border"> {this.state.orders[index].supplier_name}</div>
                                     <div className="border"> {this.state.orders[index].supplier_price}</div>
-                                    <div className="border">{this.state.orders[index].status}</div>
-                                </div>
+                                    <button value={this.state.orders[index].id} onClick={this.approveSupplier} name="id" type="button">{this.state.orders[index].status}</button>                                </div>
                             }
                         }
 
                         )}</div>
-
-
-                    : <div><button onClick={this.refresh}>רענון</button>
+                        : <div><button onClick={this.refresh}>רענון</button>
                         <Link to="/orderForm"><button  > עבור לטופס הזמנה  </button></Link></div>}
+
+                  
             </div>
         )
     }

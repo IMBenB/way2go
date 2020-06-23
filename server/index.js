@@ -237,6 +237,17 @@ app.post('/coordinatorApprove', (req, res) => {
 //end change status coordinator approve
 
 
+//change status supplier approve
+app.post('/supplierApprove', (req, res) => {
+    let body = req.body;
+    console.log('in change status coordinator');
+    console.log(body.orderNumber);
+    connection.query(`UPDATE way2go.orders SET status = 'אושר' WHERE (id = ${body.orderNumber})`)
+    
+});
+
+//end change status supplier approve
+
 let port = process.env.PORT || 5050;
 
 app.listen(port, function () {
